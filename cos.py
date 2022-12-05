@@ -2,7 +2,7 @@ import boto3
 import uuid
 
 # Credentials:
-# after pasting your Access key ID and Secret access key, uncomment lines 5 through 10 
+# after pasting your Access key ID and Secret access key, uncomment lines 6 through 11
 #s3_resource = boto3.resource('s3',
 #         aws_access_key_id='xyz',
 #         aws_secret_access_key='xyz')
