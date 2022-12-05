@@ -1,15 +1,15 @@
 import boto3
 import uuid
 
-#boto3.set_stream_logger('botocore', level='DEBUG')
+# Credentials:
+# after pasting your Access key ID and Secret access key, uncomment lines 5 through 10 
 #s3_resource = boto3.resource('s3',
-#         aws_access_key_id='xxxxxxxxx',
-#         aws_secret_access_key='yyyyyyyyyyyyyy')
+#         aws_access_key_id='xyz',
+#         aws_secret_access_key='xyz')
 #s3_client = boto3.client('s3',
-#         aws_access_key_id='xxxxxxxxx',
-#         aws_secret_access_key='yyyyyyyyyyyyyyyyyyyyyyy')
-#s3_client = boto3.client('s3')
-#s3_resource = boto3.resource('s3')
+#         aws_access_key_id='xyz',
+#         aws_secret_access_key='xyz')
+
 # retrieve the list of existing buckets
 response = s3_client.list_buckets()
 count = 1 
@@ -30,16 +30,16 @@ print(' ')
 
 
 
-# create a new unique bucket -- bucket names must be unique
+# Creating buckets:
 s3_resource.create_bucket(Bucket=BN,
                           CreateBucketConfiguration={
                               'LocationConstraint': 'us-east-2'})
+# note, bucket names must be unique
 
 
 
 
-
-# retrieve the list of existing buckets
+# Retriving the existing buckets:
 response = s3_client.list_buckets()
 # Output the bucket names
 print('Existing buckets:')
@@ -50,7 +50,7 @@ for bucket in response['Buckets']:
 
 
 
-# upload the file
+# Updating the existing buckets:
 first_file_name='data.txt'
 s3_resource.Object(BN, first_file_name).upload_file(
     Filename=first_file_name)
@@ -65,7 +65,7 @@ for bucket_dict in s3_resource.meta.client.list_buckets().get('Buckets'):
 
 
 
-# delete objects
+# Deleting the existing buckets:
 def delete_all_objects(bucket_name):
     res = []
     bucket=s3_resource.Bucket(bucket_name)
@@ -88,5 +88,7 @@ for bucket in buckets['Buckets']:
 
                          
                          
-                         
+
+print(' ')
+print(' ')
 print ("Finished!")                         
