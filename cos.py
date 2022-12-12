@@ -22,6 +22,7 @@ for bucket in response['Buckets']:
 def create_bucket_name(bucket_prefix):
     # The generated bucket name must be between 3 and 63 chars long
     return ''.join([bucket_prefix, str(uuid.uuid4())])
+# bucket prefix CANNOT be uppercase, they can only contain lowercase
 bucket_prefix='jrd'
 BN = ''.join([bucket_prefix, str(uuid.uuid4())])
 print ( "New Bucket about to be created:   " ,BN)
