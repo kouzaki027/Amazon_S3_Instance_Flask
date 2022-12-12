@@ -66,6 +66,7 @@ for bucket_dict in s3_resource.meta.client.list_buckets().get('Buckets'):
 
 
 # Deleting the existing buckets:
+'''
 def delete_all_objects(bucket_name):
     res = []
     bucket=s3_resource.Bucket(bucket_name)
@@ -74,17 +75,17 @@ def delete_all_objects(bucket_name):
                     'VersionId': obj_version.id})
     print(res)
     bucket.delete_objects(Delete={'Objects': res})
-delete_all_objects(BN)                  
+ delete_all_objects(BN)                  
 # delete bucket, however it must be empty first;  
 s3_resource.Bucket(BN).delete()
 print("about to delete all buckets / objects ")
-# loop through all buckets and delete objects and then bucket
+loop through all buckets and delete objects and then bucket
 buckets = s3_client.list_buckets()
 for bucket in buckets['Buckets']:
     s3_bucket = s3_resource.Bucket(bucket['Name'])
-    s3_bucket.objects.all().delete()
+# deletes ALL buckets including OTHER PEOPLE'S!!!    s3_bucket.objects.all().delete()
     s3_bucket.delete()
-                         
+'''                      
 
                          
                          
